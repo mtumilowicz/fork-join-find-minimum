@@ -1,6 +1,5 @@
 import com.google.common.base.Preconditions;
 
-import java.util.Arrays;
 import java.util.concurrent.RecursiveTask;
 
 import static java.util.Objects.nonNull;
@@ -13,7 +12,7 @@ class FindMinimum extends RecursiveTask<Integer> {
     private final int right;
     private final int[] arr;
 
-    private static final int THRESHOLD = 20;
+    private static final int THRESHOLD = 50;
 
     FindMinimum(int[] arr, int left, int right) {
         Preconditions.checkArgument(nonNull(arr));
@@ -37,7 +36,13 @@ class FindMinimum extends RecursiveTask<Integer> {
         }
     }
 
-    private Integer calculateMin(int[] arr) {
-        return Arrays.stream(arr).min().orElseThrow(() -> new RuntimeException("Minimum doesnt exist in the array: " + Arrays.toString(arr)));
+    private int calculateMin(int[] numbers) {
+        int minValue = numbers[left];
+        for (int i = 1; i < right; i++) {
+            if (numbers[i] < minValue) {
+                minValue = numbers[i];
+            }
+        }
+        return minValue;
     }
 }
