@@ -43,7 +43,7 @@ available block of work, allowing it to minimize the number of times it has to i
 the other worker (aka, minimize synchronization).
 
 **Fork**:  Split larger task into smaller tasks.  
-**Join**: Get result from immediate subtasks.
+**Join**: Get result from same level subtasks.
 
 # manual
 ```
