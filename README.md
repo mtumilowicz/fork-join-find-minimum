@@ -84,3 +84,19 @@ We find the minimum in the table using fork-join.
         return Math.min(new FindMinimum(arr, middle, right).compute(), findMinimum.join());
     }
     ```
+    
+# tests
+1. we randomly generate array with range `[-1_000_000; 1_000_000]`
+    ```
+    Random r = new Random();
+    for (int i = 0; i < arr.length; i++) {
+        arr[i] = r.nextInt(2_000_000) - 1_000_000;
+    }
+    ```
+1. set the minimum `-1_000_005` somewhere in the table
+    ```
+    arr[50_000] = min;
+    ```
+1. run tests:
+    * **computeUsingForkJoin** - on my CPU - around 15 ms
+    * **computeOrdinary** - on my CPU - around 115 ms
